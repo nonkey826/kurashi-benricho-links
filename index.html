@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>暮らしの便利帖｜紹介商品リンク集</title>
+<meta name="description" content="Instagram・Threads「暮らしの便利帖」で紹介した便利グッズ・家事ラク・収納アイテムのリンク集です。">
+<meta property="og:title" content="暮らしの便利帖｜紹介商品リンク集">
+<meta property="og:description" content="Instagram・Threadsで紹介した便利グッズのリンク集です。">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#EEF0EC">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;700&family=Zen+Old+Mincho:wght@600&display=swap">
+<style>
+html{-webkit-text-size-adjust:100%}
+body{margin:0}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+
+/* Layout: single narrow column for phones — brand header, PR note, newest-first item list */
+:root{
+  --bg:#EEF0EC; --card:#FAFAF7; --ink:#25302B; --muted:#5F6E66; --line:#D8DED7;
+  --sage:#6F8A78; --gold:#9A6F27; --btn:#2F4A3C; --btn-ink:#FAFAF7;
+  --display:"Zen Old Mincho","Hiragino Mincho ProN","Yu Mincho",serif;
+  --body:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#171B19; --card:#212724; --ink:#E7ECE8; --muted:#A5B2AA; --line:#35413B;
+  --sage:#9DB8A6; --gold:#D9AE63; --btn:#9DB8A6; --btn-ink:#171B19; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#171B19; --card:#212724; --ink:#E7ECE8; --muted:#A5B2AA; --line:#35413B;
+  --sage:#9DB8A6; --gold:#D9AE63; --btn:#9DB8A6; --btn-ink:#171B19; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.7}
+.wrap{max-width:560px;margin:0 auto;padding-block:32px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:18px}
+header{text-align:left;display:grid;gap:4px}
+header .eyebrow{font-size:12px;letter-spacing:.16em;color:var(--sage)}
+header h1{font-family:var(--display);font-size:26px;margin:0;letter-spacing:.06em}
+header p{margin:0;color:var(--muted);font-size:13px}
+.pr{font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:8px;padding:8px 12px;background:var(--card)}
+.filters{display:flex;gap:6px;flex-wrap:wrap}
+.filters:empty{display:none}
+.filters button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:99px;padding:4px 12px;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--sage);border-color:var(--sage);color:var(--btn-ink)}
+.items{display:grid;gap:12px}
+.item{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:grid;gap:6px;min-width:0}
+.item .top{display:flex;gap:8px;align-items:center;font-size:12px;color:var(--muted);flex-wrap:wrap}
+.cat{background:var(--bg);border-radius:99px;padding:1px 10px;color:var(--sage)}
+.new{color:var(--gold);font-weight:700;letter-spacing:.06em}
+.item h2{margin:0;font-size:16px;line-height:1.5}
+.item p{margin:0;font-size:13px;color:var(--muted)}
+.price{font-size:13px}
+.go{display:block;text-align:center;text-decoration:none;background:var(--btn);color:var(--btn-ink);border-radius:10px;padding:10px;font-weight:700;margin-top:4px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.empty{color:var(--muted);text-align:center;padding:32px 16px;border:1px dashed var(--line);border-radius:14px}
+.foot{font-size:11px;color:var(--muted)}
+.foot a{color:var(--sage)}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <span class="eyebrow">KURASHI NO BENRICHO</span>
+    <h1>暮らしの便利帖</h1>
+    <p>Instagram・Threadsで紹介した便利グッズのリンク集です。新しい順に並んでいます。</p>
+  </header>
+  <div class="pr">【PR】このページには楽天市場のアフィリエイトリンクを含みます。価格は掲載日時点のものです。購入前に商品ページで最新の価格・在庫をご確認ください。</div>
+  <div class="filters" id="filters" aria-label="カテゴリで絞り込む"></div>
+  <section class="items" id="items"><div class="empty">紹介した商品がここに並びます。最初の紹介までもう少しお待ちください。</div></section>
+  <p class="foot">暮らしの便利帖｜大人の愛用品　<a href="https://www.instagram.com/kurashi_benricho_40/" target="_blank" rel="noopener">Instagram</a>・<a href="https://www.threads.com/@kurashi_benricho_40" target="_blank" rel="noopener">Threads</a></p>
+</div>
+
+<!--BENRICHO_DATA_START-->
+<script type="application/json" id="data">{"updated":"2026-10-21 23:58","items":[{"date":"2026-10-21","cat":"キッチン","name":"伸縮式 水切りラック（シンク上・ステンレス）","summary":"幅を伸縮してロック。たたむと厚さ約7.5cm、食洗機で丸洗いできるステンレス製","price":"2,580円〜","price_date":"10/21","link":"https://a.r10.to/hYEXY5"}]}</script>
+<!--BENRICHO_DATA_END-->
+
+<script>
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+let data={items:[]};try{data=JSON.parse(document.getElementById("data").textContent)}catch(e){}
+const items=(data.items||[]).slice().sort((a,b)=>String(b.date).localeCompare(String(a.date)));
+let cur="すべて";
+function render(){
+  const cats=["すべて",...new Set(items.map(i=>i.cat).filter(Boolean))];
+  document.getElementById("filters").innerHTML=cats.length>2?cats.map(c=>`<button type="button" aria-pressed="${c===cur}" data-c="${esc(c)}">${esc(c)}</button>`).join(""):"";
+  document.querySelectorAll("#filters button").forEach(b=>b.onclick=()=>{cur=b.dataset.c;render()});
+  const list=items.filter(i=>cur==="すべて"||i.cat===cur);
+  if(!list.length)return;
+  const latest=items[0]&&items[0].date;
+  document.getElementById("items").innerHTML=list.map(i=>`<article class="item">
+    <div class="top"><span class="cat">${esc(i.cat)}</span><span>${esc(i.date)} 紹介</span>${i.date===latest?'<span class="new">NEW</span>':""}</div>
+    <h2>${esc(i.name)}</h2>
+    ${i.summary?`<p>${esc(i.summary)}</p>`:""}
+    <div class="price">${esc(i.price)}${i.price_date?`（${esc(i.price_date)}時点）`:""}</div>
+    <a class="go" href="${esc(i.link)}" target="_blank" rel="noopener sponsored">楽天市場で見る</a></article>`).join("");
+}
+render();
+</script>
+</body>
+</html>
