@@ -1,8 +1,6 @@
 name: Daily product sales research
 
 on:
-  schedule:
-    - cron: '0 23 * * *' # 08:00 JST; GitHub schedules can be delayed
   workflow_dispatch:
 
 permissions:
