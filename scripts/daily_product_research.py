@@ -15,7 +15,7 @@ OUTPUT = Path("research/threads-products.json")
 today = dt.datetime.now(dt.timezone(dt.timedelta(hours=9))).date().isoformat()
 prompt = f"""Today in Japan: {today}. Research products likely to SELL (not merely viral) for Japanese women age 40-60, for 暮らしの便利帖｜大人の愛用品.
 Focus: kitchen convenience, cleaning, organization, time-saving, premium-looking household essentials. Exclude fashion, jewelry, supplements, medical products and risky items.
-Use live web search to look for Japanese Rakuten ranking/bestsellers and Amazon Japan bestsellers, recent authentic customer reviews, and optionally public Threads purchase-intent posts. Do not assume inaccessible Threads data. Rank primarily by demonstrated purchase demand, review strength, target fit, and likely affiliate economics. Virality is secondary.
+FIRST find real, indexed individual product listing URLs from Japanese Rakuten ranking/bestsellers and Amazon Japan bestsellers, then copy the exact product titles and URLs from the same search result. NEVER invent an ASIN, item ID, product URL, or product title. Do not use a URL unless the search result explicitly associates that exact URL with that exact product. Check recent authentic customer reviews when available, and optionally public Threads purchase-intent posts. Do not assume inaccessible Threads data. Rank primarily by demonstrated purchase demand, review strength, target fit, and likely affiliate economics. Virality is secondary.
 Only report information you can substantiate with direct public URLs. NEVER fabricate sales volume, review counts, ratings, affiliate commission rates, availability, prices, or affiliate URLs. Do not claim Amazon/Rakuten affiliate eligibility without evidence. Avoid products already featured if discoverable at https://nonkey826.github.io/kurashi-benricho-links/ . If uncertain, mark unknown.
 Return ONLY valid JSON with the exact shape:
 {{"products":[{{"name":"Japanese product name","category":"category","why_likely_to_sell":"evidence-based Japanese rationale","target_fit":"Japanese","estimated_price_jpy":null,"rakuten_url":null,"amazon_url":null,"evidence_urls":["https://..."],"sales_evidence":"Japanese; distinguish rankings from sales figures","reviews_evidence":"Japanese or unknown","threads_evidence":"Japanese or not verified","affiliate_rate":"unverified","risks":"Japanese","score":0}}]}}
@@ -77,7 +77,7 @@ def verified_merchant_url(url, product_name):
             if not title_match:
                 return False
             title = html.unescape(re.sub(r"<[^>]+>", "", title_match.group(1)))
-            normalize = lambda v: re.sub(r"[\\s\\W_]+", "", v.lower(), flags=re.UNICODE)
+            normalize = lambda v: re.sub(r"[\s\W_]+", "", v.lower(), flags=re.UNICODE)
             title_norm = normalize(title)
             # Product identity must be supported by the merchant's own title.
             # Ambiguous matches are rejected rather than guessed.
