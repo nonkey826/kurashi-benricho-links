@@ -8,6 +8,7 @@ import sys
 import urllib.error
 import urllib.request
 from pathlib import Path
+from urllib.parse import urlparse
 
 OUTPUT = Path("research/threads-products.json")
 today = dt.datetime.now(dt.timezone(dt.timedelta(hours=9))).date().isoformat()
@@ -43,16 +44,58 @@ except ValueError:
 products=result.get("products")
 if not isinstance(products,list):
     sys.exit("Invalid product list")
+# Fail closed: model-generated URLs and assertions are NOT evidence.
+# Require an actual reachable merchant product page. Do not publish unverified
+# rankings, ratings, commission rates or Threads engagement claims.
+def verified_merchant_url(url):
+    if not isinstance(url, str) or not url.startswith("https://"):
+        return False
+    parsed = urlparse(url)
+    host = (parsed.hostname or "").lower()
+    path = parsed.path.lower()
+    if host == "item.rakuten.co.jp":
+        if len([p for p in path.split("/") if p]) < 2:
+            return False
+    elif host in ("www.amazon.co.jp", "amazon.co.jp"):
+        if not re.search(r"/(?:dp|gp/product)/[a-z0-9]{10}(?:/|$)",path):
+            return False
+    else:
+        return False
+    # Reject obvious placeholder/example patterns seen in the first run.
+    if re.search(r"(?:/abc/|/def/|/ghi/|12345678|23456789|34567890|b12345678)",url.lower()):
+        return False
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent":"Mozilla/5.0 (compatible; ProductResearchValidation/1.0)"})
+        with urllib.request.urlopen(req, timeout=12) as res:
+            if res.status != 200:
+                return False
+            body = res.read(180000).decode("utf-8",errors="ignore").lower()
+            return len(body) > 1000 and not any(x in body for x in ("page not found", "商品が見つかりません"))
+    except (urllib.error.URLError, TimeoutError, ValueError):
+        return False
+
 clean=[]
 for p in products[:3]:
-    if not isinstance(p,dict) or not p.get("name") or not isinstance(p.get("evidence_urls"),list):
+    if not isinstance(p,dict) or not isinstance(p.get("name"),str):
         continue
-    urls=[u for u in p["evidence_urls"] if isinstance(u,str) and u.startswith("https://")]
-    if not urls:
+    merchant_urls=[p.get("rakuten_url"),p.get("amazon_url")]
+    verified=[u for u in merchant_urls if verified_merchant_url(u)]
+    if not verified:
+        print("Rejected candidate: no independently reachable merchant listing",file=sys.stderr)
         continue
-    p["evidence_urls"]=urls
+    # A valid product listing does not establish rankings, review scores,
+    # commission rates or social popularity. Strip unverifiable assertions.
+    p["rakuten_url"]=next((u for u in verified if "rakuten.co.jp" in u),None)
+    p["amazon_url"]=next((u for u in verified if "amazon.co.jp" in u),None)
+    p["evidence_urls"]=verified
+    p["sales_evidence"]="未検証（販売ページの存在のみ確認）"
+    p["reviews_evidence"]="未検証"
+    p["threads_evidence"]="未検証"
+    p["affiliate_rate"]="未検証"
+    p["score"]=None
+    p["verification_level"]="merchant_page_reachable_only"
     clean.append(p)
-output={"schema_version":1,"brand":"暮らしの便利帖｜大人の愛用品","updated_at":dt.datetime.now(dt.timezone.utc).isoformat(),"status":"researched" if clean else "no_verified_candidates","research_policy":"sales_potential_first","products":clean}
+output={"schema_version":1,"brand":"暮らしの便利帖｜大人の愛用品","updated_at":dt.datetime.now(dt.timezone.utc).isoformat(),"status":"merchant_links_checked_only" if clean else "no_verified_candidates","research_policy":"sales_potential_first","products":clean}
 OUTPUT.parent.mkdir(parents=True,exist_ok=True)
 OUTPUT.write_text(json.dumps(output,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
 print(f"Saved {len(clean)} researched candidates.")
