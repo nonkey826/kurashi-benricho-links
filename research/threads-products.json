@@ -1,66 +1,8 @@
 {
   "schema_version": 1,
   "brand": "暮らしの便利帖｜大人の愛用品",
-  "updated_at": "2026-10-25T15:04:19.746969+00:00",
-  "status": "researched",
+  "updated_at": null,
+  "status": "invalid_unverified_first_run",
   "research_policy": "sales_potential_first",
-  "products": [
-    {
-      "name": "日本製 ステンレス製 3段式 調味料ラック",
-      "category": "キッチン収納",
-      "why_likely_to_sell": "日本の家庭で調味料の整理整頓が重要視されており、ステンレス製の耐久性と清潔感が好まれる。",
-      "target_fit": "日本人女性",
-      "estimated_price_jpy": 3500,
-      "rakuten_url": "https://item.rakuten.co.jp/abc/12345678/",
-      "amazon_url": "https://www.amazon.co.jp/dp/B12345678",
-      "evidence_urls": [
-        "https://item.rakuten.co.jp/abc/12345678/",
-        "https://www.amazon.co.jp/dp/B12345678"
-      ],
-      "sales_evidence": "楽天ランキング キッチン収納部門 1位",
-      "reviews_evidence": "日本語のカスタマーレビュー 4.5/5",
-      "threads_evidence": "購入意向ありのスレッドあり",
-      "affiliate_rate": "5%",
-      "risks": "特になし",
-      "score": 90
-    },
-    {
-      "name": "日本製 竹製 まな板",
-      "category": "キッチン用品",
-      "why_likely_to_sell": "竹は日本の伝統的な素材であり、環境に優しく、抗菌性が高いとされる。",
-      "target_fit": "日本人女性",
-      "estimated_price_jpy": 2500,
-      "rakuten_url": "https://item.rakuten.co.jp/def/23456789/",
-      "amazon_url": "https://www.amazon.co.jp/dp/B23456789",
-      "evidence_urls": [
-        "https://item.rakuten.co.jp/def/23456789/",
-        "https://www.amazon.co.jp/dp/B23456789"
-      ],
-      "sales_evidence": "Amazonベストセラー キッチン用品部門 2位",
-      "reviews_evidence": "日本語のカスタマーレビュー 4.7/5",
-      "threads_evidence": "購入意向ありのスレッドあり",
-      "affiliate_rate": "5%",
-      "risks": "特になし",
-      "score": 85
-    },
-    {
-      "name": "日本製 省スペース型 2段式 ゴミ箱",
-      "category": "キッチン収納",
-      "why_likely_to_sell": "限られたキッチン空間を有効活用できる省スペース設計が評価されている。",
-      "target_fit": "日本人女性",
-      "estimated_price_jpy": 4000,
-      "rakuten_url": "https://item.rakuten.co.jp/ghi/34567890/",
-      "amazon_url": "https://www.amazon.co.jp/dp/B34567890",
-      "evidence_urls": [
-        "https://item.rakuten.co.jp/ghi/34567890/",
-        "https://www.amazon.co.jp/dp/B34567890"
-      ],
-      "sales_evidence": "楽天ランキング キッチン収納部門 3位",
-      "reviews_evidence": "日本語のカスタマーレビュー 4.6/5",
-      "threads_evidence": "購入意向ありのスレッドあり",
-      "affiliate_rate": "5%",
-      "risks": "特になし",
-      "score": 80
-    }
-  ]
+  "products": []
 }
