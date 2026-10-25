@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Research product demand with OpenAI web search; never fabricate verification."""
 import datetime as dt
+import html
 import json
 import os
 import re
@@ -47,7 +48,7 @@ if not isinstance(products,list):
 # Fail closed: model-generated URLs and assertions are NOT evidence.
 # Require an actual reachable merchant product page. Do not publish unverified
 # rankings, ratings, commission rates or Threads engagement claims.
-def verified_merchant_url(url):
+def verified_merchant_url(url, product_name):
     if not isinstance(url, str) or not url.startswith("https://"):
         return False
     parsed = urlparse(url)
@@ -70,16 +71,31 @@ def verified_merchant_url(url):
             if res.status != 200:
                 return False
             body = res.read(180000).decode("utf-8",errors="ignore").lower()
-            return len(body) > 1000 and not any(x in body for x in ("page not found", "商品が見つかりません"))
+            if len(body) < 1000 or any(x in body for x in ("page not found", "商品が見つかりません", "captcha")):
+                return False
+            title_match = re.search(r"<title[^>]*>(.*?)</title>", body, flags=re.S | re.I)
+            if not title_match:
+                return False
+            title = html.unescape(re.sub(r"<[^>]+>", "", title_match.group(1)))
+            normalize = lambda v: re.sub(r"[\\s\\W_]+", "", v.lower(), flags=re.UNICODE)
+            title_norm = normalize(title)
+            # Product identity must be supported by the merchant's own title.
+            # Ambiguous matches are rejected rather than guessed.
+            name_norm = normalize(product_name)
+            words = [normalize(w) for w in re.split(r"[\\s　]+", product_name) if len(normalize(w)) >= 3]
+            return (len(name_norm) >= 6 and name_norm in title_norm) or (
+                len(words) >= 2 and all(w in title_norm for w in words)
+            )
     except (urllib.error.URLError, TimeoutError, ValueError):
         return False
 
 clean=[]
+seen_urls=set()
 for p in products[:3]:
     if not isinstance(p,dict) or not isinstance(p.get("name"),str):
         continue
     merchant_urls=[p.get("rakuten_url"),p.get("amazon_url")]
-    verified=[u for u in merchant_urls if verified_merchant_url(u)]
+    verified=[u for u in merchant_urls if u not in seen_urls and verified_merchant_url(u,p['name'])]
     if not verified:
         print("Rejected candidate: no independently reachable merchant listing",file=sys.stderr)
         continue
@@ -88,14 +104,17 @@ for p in products[:3]:
     p["rakuten_url"]=next((u for u in verified if "rakuten.co.jp" in u),None)
     p["amazon_url"]=next((u for u in verified if "amazon.co.jp" in u),None)
     p["evidence_urls"]=verified
+    seen_urls.update(verified)
+    p["estimated_price_jpy"]=None
+    p["why_likely_to_sell"]="売れ筋根拠は未検証。商品名と販売ページ表題の一致のみ確認。"
     p["sales_evidence"]="未検証（販売ページの存在のみ確認）"
     p["reviews_evidence"]="未検証"
     p["threads_evidence"]="未検証"
     p["affiliate_rate"]="未検証"
     p["score"]=None
-    p["verification_level"]="merchant_page_reachable_only"
+    p["verification_level"]="merchant_title_matches_product_name_only"
     clean.append(p)
-output={"schema_version":1,"brand":"暮らしの便利帖｜大人の愛用品","updated_at":dt.datetime.now(dt.timezone.utc).isoformat(),"status":"merchant_links_checked_only" if clean else "no_verified_candidates","research_policy":"sales_potential_first","products":clean}
+output={"schema_version":1,"brand":"暮らしの便利帖｜大人の愛用品","updated_at":dt.datetime.now(dt.timezone.utc).isoformat(),"status":"merchant_identity_checked_only" if clean else "no_verified_candidates","research_policy":"sales_potential_first","products":clean}
 OUTPUT.parent.mkdir(parents=True,exist_ok=True)
 OUTPUT.write_text(json.dumps(output,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
 print(f"Saved {len(clean)} researched candidates.")
