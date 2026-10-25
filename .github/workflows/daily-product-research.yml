@@ -1,0 +1,35 @@
+name: Daily product sales research
+
+on:
+  schedule:
+    - cron: '0 23 * * *' # 08:00 JST; GitHub schedules can be delayed
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-product-research
+  cancel-in-progress: false
+
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Research saleable products
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python3 scripts/daily_product_research.py
+      - name: Commit verified research results only
+        run: |
+          git add research/threads-products.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Update daily product sales research"
+          git push
