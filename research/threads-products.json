@@ -1,66 +1,8 @@
 {
   "schema_version": 1,
   "brand": "暮らしの便利帖｜大人の愛用品",
-  "updated_at": "2026-10-25T15:07:39.578092+00:00",
-  "status": "merchant_links_checked_only",
+  "updated_at": null,
+  "status": "invalid_product_url_mismatch",
   "research_policy": "sales_potential_first",
-  "products": [
-    {
-      "name": "アイリスオーヤマ スチームクリーナー",
-      "category": "掃除機",
-      "why_likely_to_sell": "日本の家庭で人気の高いスチームクリーナーで、手軽に掃除ができると評価されています。",
-      "target_fit": "日本",
-      "estimated_price_jpy": 12000,
-      "rakuten_url": null,
-      "amazon_url": "https://www.amazon.co.jp/dp/B07Y5X5X5X",
-      "evidence_urls": [
-        "https://www.amazon.co.jp/dp/B07Y5X5X5X"
-      ],
-      "sales_evidence": "未検証（販売ページの存在のみ確認）",
-      "reviews_evidence": "未検証",
-      "threads_evidence": "未検証",
-      "affiliate_rate": "未検証",
-      "risks": "日本; なし",
-      "score": null,
-      "verification_level": "merchant_page_reachable_only"
-    },
-    {
-      "name": "山崎実業 タワーシリーズ キッチンペーパーホルダー",
-      "category": "キッチン収納",
-      "why_likely_to_sell": "シンプルでスタイリッシュなデザインが日本の家庭で好まれています。",
-      "target_fit": "日本",
-      "estimated_price_jpy": 3000,
-      "rakuten_url": null,
-      "amazon_url": "https://www.amazon.co.jp/dp/B07Y5X5X5X",
-      "evidence_urls": [
-        "https://www.amazon.co.jp/dp/B07Y5X5X5X"
-      ],
-      "sales_evidence": "未検証（販売ページの存在のみ確認）",
-      "reviews_evidence": "未検証",
-      "threads_evidence": "未検証",
-      "affiliate_rate": "未検証",
-      "risks": "日本; なし",
-      "score": null,
-      "verification_level": "merchant_page_reachable_only"
-    },
-    {
-      "name": "無印良品 ステンレス製 まな板",
-      "category": "キッチン用品",
-      "why_likely_to_sell": "耐久性と清潔感があり、日本の家庭で長年愛用されています。",
-      "target_fit": "日本",
-      "estimated_price_jpy": 5000,
-      "rakuten_url": null,
-      "amazon_url": "https://www.amazon.co.jp/dp/B07Y5X5X5X",
-      "evidence_urls": [
-        "https://www.amazon.co.jp/dp/B07Y5X5X5X"
-      ],
-      "sales_evidence": "未検証（販売ページの存在のみ確認）",
-      "reviews_evidence": "未検証",
-      "threads_evidence": "未検証",
-      "affiliate_rate": "未検証",
-      "risks": "日本; なし",
-      "score": null,
-      "verification_level": "merchant_page_reachable_only"
-    }
-  ]
+  "products": []
 }
