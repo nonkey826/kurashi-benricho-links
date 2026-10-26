@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "brand": "暮らしの便利帖｜大人の愛用品",
+  "purpose": "Claude read-only research handoff",
+  "status": "review_only_posting_prohibited",
+  "source_file": "research/claude-candidate-url-review.json",
+  "readme": "Read this file for research and draft planning only. This is not an approved posting ledger. AI evaluation details and affiliate links are not included here. Do not publish or schedule products from this file.",
+  "rules": {
+    "require_approved_for_posting_true": true,
+    "allow_automatic_posting": false,
+    "allow_draft_research": true,
+    "allow_product_link_publication": false,
+    "do_not_change_existing_posting_tasks": true
+  },
+  "products": [
+    {
+      "item_code": "shimoyama-onlineshop:10001813",
+      "merchant_url": "https://item.rakuten.co.jp/shimoyama-onlineshop/2111aux002/",
+      "merchant_page_review": "page_title_matches",
+      "page_content_verified": true,
+      "affiliate_destination_verified": false,
+      "approved_for_posting": false
+    },
+    {
+      "item_code": "shopmarna:10006509",
+      "merchant_url": "https://item.rakuten.co.jp/shopmarna/k747/",
+      "merchant_page_review": "page_title_matches",
+      "page_content_verified": true,
+      "affiliate_destination_verified": false,
+      "approved_for_posting": false
+    },
+    {
+      "item_code": "shopmarna:10006687",
+      "merchant_url": "https://item.rakuten.co.jp/shopmarna/k809/",
+      "merchant_page_review": "page_title_matches",
+      "page_content_verified": true,
+      "affiliate_destination_verified": false,
+      "approved_for_posting": false
+    },
+    {
+      "item_code": "taigu188:10000816",
+      "merchant_url": "https://item.rakuten.co.jp/taigu188/short_sieve/",
+      "merchant_page_review": "page_title_matches",
+      "page_content_verified": true,
+      "affiliate_destination_verified": false,
+      "approved_for_posting": false
+    },
+    {
+      "item_code": "kurashiya:10005855",
+      "merchant_url": "https://item.rakuten.co.jp/kurashiya/111-97130/",
+      "merchant_page_review": "page_fetch_timeout",
+      "page_content_verified": false,
+      "affiliate_destination_verified": false,
+      "approved_for_posting": false
+    },
+    {
+      "item_code": "gekiyasukaguya:10023096",
+      "merchant_url": "https://item.rakuten.co.jp/gekiyasukaguya/ket140065/",
+      "merchant_page_review": "page_title_matches",
+      "page_content_verified": true,
+      "affiliate_destination_verified": false,
+      "approved_for_posting": false
+    },
+    {
+      "item_code": "keyuca:10020019",
+      "merchant_url": "https://item.rakuten.co.jp/keyuca/3500450/",
+      "merchant_page_review": "page_title_matches_but_page_product_number_differs",
+      "page_content_verified": false,
+      "affiliate_destination_verified": false,
+      "approved_for_posting": false
+    },
+    {
+      "item_code": "criminal:10000118",
+      "merchant_url": "https://item.rakuten.co.jp/criminal/caprack-18/",
+      "merchant_page_review": "page_title_matches_but_page_product_number_differs",
+      "page_content_verified": false,
+      "affiliate_destination_verified": false,
+      "approved_for_posting": false
+    }
+  ]
+}
