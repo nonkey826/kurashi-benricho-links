@@ -27,6 +27,9 @@ for entry in review["products"]:
         if parsed.scheme == "https" and parsed.hostname == "hb.afl.rakuten.co.jp":
             pc = parse_qs(parsed.query).get("pc", [""])[0]
             link_valid = pc.rstrip("/") == entry["merchant_url"].rstrip("/")
+    availability = item.get("api_availability") if item else None
+    availability_valid = availability in (0, 1, "0", "1") and type(availability) is not bool
+    availability_code = str(availability) if availability_valid else None
     results.append({
         "item_code": code,
         "api_found": bool(item),
@@ -37,8 +40,9 @@ for entry in review["products"]:
         "merchant_page_matches_review": page_match,
         "affiliate_url_present": bool(link),
         "affiliate_url_target_matches_review": link_valid,
-        "stock_status": "unknown_not_provided_by_this_api_snapshot",
-        "stock_verified": False,
+        "stock_status": "orderable" if availability_code == "1" else ("not_orderable" if availability_code == "0" else "unknown"),
+        "stock_verified": availability_valid,
+        "stock_quantity_verified": False,
         "approved_for_posting": False,
     })
 out = {
@@ -52,7 +56,7 @@ out = {
         "price_verified": sum(x["price_verified_from_fresh_api"] for x in results),
         "merchant_url_matched": sum(x["merchant_page_matches_review"] for x in results),
         "affiliate_target_matched": sum(x["affiliate_url_target_matches_review"] for x in results),
-        "stock_verified": 0,
+        "stock_verified": sum(x["stock_verified"] for x in results),
         "approved": 0,
     },
     "products": results,
