@@ -2,7 +2,7 @@
   "schema_version": 1,
   "brand": "暮らしの便利帖｜大人の愛用品",
   "source": "user_uploaded_claude_candidate_artifact_2026-10-26",
-  "status": "merchant_page_title_review_completed_affiliate_not_verified_posting_prohibited",
+  "status": "affiliate_parameters_consistent_live_redirect_and_attribution_unverified_posting_prohibited",
   "description": "Merchant-page title compared to the uploaded AI-reviewed product title using retrieved Rakuten pages. This is not an affiliate redirect or price verification.",
   "products": [
     {
@@ -13,7 +13,9 @@
       "affiliate_destination_verified": false,
       "approved_for_posting": false,
       "merchant_page_review": "page_title_matches",
-      "evidence_ref": "turn115907view0"
+      "evidence_ref": "turn115907view0",
+      "affiliate_parameter_consistency_checked": true,
+      "affiliate_parameter_consistency_passed": true
     },
     {
       "item_code": "shopmarna:10006509",
@@ -23,7 +25,9 @@
       "affiliate_destination_verified": false,
       "approved_for_posting": false,
       "merchant_page_review": "page_title_matches",
-      "evidence_ref": "turn115907view1"
+      "evidence_ref": "turn115907view1",
+      "affiliate_parameter_consistency_checked": true,
+      "affiliate_parameter_consistency_passed": true
     },
     {
       "item_code": "shopmarna:10006687",
@@ -33,7 +37,9 @@
       "affiliate_destination_verified": false,
       "approved_for_posting": false,
       "merchant_page_review": "page_title_matches",
-      "evidence_ref": "turn115907view2"
+      "evidence_ref": "turn115907view2",
+      "affiliate_parameter_consistency_checked": true,
+      "affiliate_parameter_consistency_passed": true
     },
     {
       "item_code": "taigu188:10000816",
@@ -43,7 +49,9 @@
       "affiliate_destination_verified": false,
       "approved_for_posting": false,
       "merchant_page_review": "page_title_matches",
-      "evidence_ref": "turn115907view3"
+      "evidence_ref": "turn115907view3",
+      "affiliate_parameter_consistency_checked": true,
+      "affiliate_parameter_consistency_passed": true
     },
     {
       "item_code": "kurashiya:10005855",
@@ -53,7 +61,9 @@
       "affiliate_destination_verified": false,
       "approved_for_posting": false,
       "merchant_page_review": "page_fetch_timeout",
-      "evidence_ref": "turn115907view4"
+      "evidence_ref": "turn115907view4",
+      "affiliate_parameter_consistency_checked": true,
+      "affiliate_parameter_consistency_passed": true
     },
     {
       "item_code": "gekiyasukaguya:10023096",
@@ -63,7 +73,9 @@
       "affiliate_destination_verified": false,
       "approved_for_posting": false,
       "merchant_page_review": "page_title_matches",
-      "evidence_ref": "turn115907view5"
+      "evidence_ref": "turn115907view5",
+      "affiliate_parameter_consistency_checked": true,
+      "affiliate_parameter_consistency_passed": true
     },
     {
       "item_code": "keyuca:10020019",
@@ -73,7 +85,9 @@
       "affiliate_destination_verified": false,
       "approved_for_posting": false,
       "merchant_page_review": "page_title_matches_but_page_product_number_differs",
-      "evidence_ref": "turn115907view6"
+      "evidence_ref": "turn115907view6",
+      "affiliate_parameter_consistency_checked": true,
+      "affiliate_parameter_consistency_passed": true
     },
     {
       "item_code": "criminal:10000118",
@@ -83,8 +97,13 @@
       "affiliate_destination_verified": false,
       "approved_for_posting": false,
       "merchant_page_review": "page_title_matches_but_page_product_number_differs",
-      "evidence_ref": "turn115907view7"
+      "evidence_ref": "turn115907view7",
+      "affiliate_parameter_consistency_checked": true,
+      "affiliate_parameter_consistency_passed": true
     }
   ],
-  "reviewed_at": "2026-10-27"
+  "reviewed_at": "2026-10-27",
+  "affiliate_parameter_audit": "8_of_8_pc_and_m_parameters_consistent_with_item_code_offline_only",
+  "affiliate_redirect_live_tested": false,
+  "affiliate_attribution_verified": false
 }
