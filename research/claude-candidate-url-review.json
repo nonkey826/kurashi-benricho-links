@@ -2,7 +2,7 @@
   "schema_version": 1,
   "brand": "暮らしの便利帖｜大人の愛用品",
   "source": "user_uploaded_claude_candidate_artifact_2026-10-26",
-  "status": "affiliate_parameters_consistent_live_redirect_and_attribution_unverified_posting_prohibited",
+  "status": "all_eight_merchant_page_product_identity_supported_affiliate_attribution_unverified",
   "description": "Merchant-page title compared to the uploaded AI-reviewed product title using retrieved Rakuten pages. This is not an affiliate redirect or price verification.",
   "products": [
     {
@@ -57,13 +57,16 @@
       "item_code": "kurashiya:10005855",
       "merchant_url": "https://item.rakuten.co.jp/kurashiya/111-97130/",
       "url_structure_checked": true,
-      "page_content_verified": false,
+      "page_content_verified": true,
       "affiliate_destination_verified": false,
       "approved_for_posting": false,
-      "merchant_page_review": "page_fetch_timeout",
+      "merchant_page_review": "page_product_identity_supported",
       "evidence_ref": "turn115907view4",
       "affiliate_parameter_consistency_checked": true,
-      "affiliate_parameter_consistency_passed": true
+      "affiliate_parameter_consistency_passed": true,
+      "displayed_product_number": "111-97130",
+      "model_or_product_name": "TSR2-W",
+      "review_source_url": "https://item.rakuten.co.jp/kurashiya/111-97130/"
     },
     {
       "item_code": "gekiyasukaguya:10023096",
@@ -81,29 +84,36 @@
       "item_code": "keyuca:10020019",
       "merchant_url": "https://item.rakuten.co.jp/keyuca/3500450/",
       "url_structure_checked": true,
-      "page_content_verified": false,
+      "page_content_verified": true,
       "affiliate_destination_verified": false,
       "approved_for_posting": false,
-      "merchant_page_review": "page_title_matches_but_page_product_number_differs",
+      "merchant_page_review": "page_product_identity_supported_display_sku_differs_from_url_slug",
       "evidence_ref": "turn115907view6",
       "affiliate_parameter_consistency_checked": true,
-      "affiliate_parameter_consistency_passed": true
+      "affiliate_parameter_consistency_passed": true,
+      "displayed_product_number": "3501308",
+      "model_or_product_name": "Salmo バナナスタンド",
+      "review_source_url": "https://item.rakuten.co.jp/keyuca/3500450/"
     },
     {
       "item_code": "criminal:10000118",
       "merchant_url": "https://item.rakuten.co.jp/criminal/caprack-18/",
       "url_structure_checked": true,
-      "page_content_verified": false,
+      "page_content_verified": true,
       "affiliate_destination_verified": false,
       "approved_for_posting": false,
-      "merchant_page_review": "page_title_matches_but_page_product_number_differs",
+      "merchant_page_review": "page_product_identity_supported_display_sku_differs_from_url_slug",
       "evidence_ref": "turn115907view7",
       "affiliate_parameter_consistency_checked": true,
-      "affiliate_parameter_consistency_passed": true
+      "affiliate_parameter_consistency_passed": true,
+      "displayed_product_number": "ac-caprack-perfectc-18",
+      "model_or_product_name": "PERFECT CURVE キャップラック 18個収納",
+      "review_source_url": "https://item.rakuten.co.jp/criminal/caprack-18/"
     }
   ],
   "reviewed_at": "2026-10-27",
   "affiliate_parameter_audit": "8_of_8_pc_and_m_parameters_consistent_with_item_code_offline_only",
   "affiliate_redirect_live_tested": false,
-  "affiliate_attribution_verified": false
+  "affiliate_attribution_verified": false,
+  "latest_review_note": "Three formerly unresolved merchant listings reviewed using indexed Rakuten listing pages; display SKU need not equal URL slug or API itemCode. All approvals remain false."
 }
