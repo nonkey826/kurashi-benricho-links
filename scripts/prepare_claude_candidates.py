@@ -29,9 +29,9 @@ if eligible:
         "affiliate account aimed at women aged 40-60. Assess practical target fit, "
         "purchase motivation, drawbacks and differentiation. Do NOT claim actual sales, "
         "ranking, commission rate, merchant-page verification or link validity. "
-        "Return ONLY JSON: {\\\"evaluations\\\":[{\\\"item_code\\\":\\\"...\\\","
-        "\\\"score\\\":integer 0-100,\\\"reason\\\":\\\"Japanese brief reason\\\","
-        "\\\"risk\\\":\\\"Japanese brief risk\\\"}]}. "
+        "Return ONLY JSON: {\"evaluations\":[{\"item_code\":\"...\","
+        "\"score\":integer 0-100,\"reason\":\"Japanese brief reason\","
+        "\"risk\":\"Japanese brief risk\"}]}. "
         "Evaluate only supplied item codes; do not invent products. Data: "
         + json.dumps([{"item_code": p["item_code"], "name": p["name"],
                        "price_jpy": p["price_jpy"], "review_count": p["review_count"],
@@ -49,7 +49,7 @@ if eligible:
     texts = [part.get("text", "") for msg in result.get("output", [])
              if msg.get("type") == "message" for part in msg.get("content", [])
              if part.get("type") == "output_text"]
-    parsed = json.loads("\\n".join(texts))
+    parsed = json.loads("\n".join(texts))
     if not isinstance(parsed.get("evaluations"), list):
         raise SystemExit("Invalid AI evaluation format")
     valid_codes = {p["item_code"] for p in eligible}
@@ -86,5 +86,5 @@ payload = {"schema_version": 1, "brand": "暮らしの便利帖｜大人の愛�
            "products": out}
 target = Path("research/claude-product-candidates.json")
 target.parent.mkdir(parents=True, exist_ok=True)
-target.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\\n", encoding="utf-8")
+target.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 print(f"Prepared {len(out)} AI-ranked candidates for manual review; posting prohibited.")
