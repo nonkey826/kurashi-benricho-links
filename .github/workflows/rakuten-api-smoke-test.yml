@@ -1,0 +1,75 @@
+name: Rakuten API connection smoke test
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test-rakuten:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Test a single Rakuten product search
+        env:
+          RAKUTEN_APPLICATION_ID: ${{ secrets.RAKUTEN_APPLICATION_ID }}
+          RAKUTEN_ACCESS_KEY: ${{ secrets.RAKUTEN_ACCESS_KEY }}
+          RAKUTEN_AFFILIATE_ID: ${{ secrets.RAKUTEN_AFFILIATE_ID }}
+        run: |
+          python3 - <<'PY'
+          import json
+          import os
+          import urllib.error
+          import urllib.parse
+          import urllib.request
+
+          app_id = os.environ.get("RAKUTEN_APPLICATION_ID")
+          access_key = os.environ.get("RAKUTEN_ACCESS_KEY")
+          if not app_id or not access_key:
+              raise SystemExit("Required Rakuten credentials are missing.")
+
+          endpoint = "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20220601"
+          params = {
+              "applicationId": app_id,
+              "accessKey": access_key,
+              "keyword": "収納",
+              "hits": 1,
+              "format": "json",
+          }
+          affiliate_id = os.environ.get("RAKUTEN_AFFILIATE_ID")
+          if affiliate_id:
+              params["affiliateId"] = affiliate_id
+
+          url = endpoint + "?" + urllib.parse.urlencode(params)
+          # Never print the request URL: it contains credentials.
+          request = urllib.request.Request(
+              url, headers={"User-Agent": "KurashiBenrichoResearch/1.0"}
+          )
+          try:
+              with urllib.request.urlopen(request, timeout=20) as response:
+                  data = json.load(response)
+          except urllib.error.HTTPError as exc:
+              raise SystemExit(f"Rakuten API returned HTTP {exc.code}") from None
+          except urllib.error.URLError:
+              raise SystemExit("Rakuten API connection failed") from None
+
+          rows = data.get("Items", [])
+          if not rows:
+              raise SystemExit("Rakuten API returned no product items.")
+          item = rows[0].get("Item", rows[0])
+          checks = {
+              "itemCode": bool(item.get("itemCode")),
+              "itemName": bool(item.get("itemName")),
+              "itemPrice": item.get("itemPrice") is not None,
+              "itemUrl": str(item.get("itemUrl", "")).startswith("https://"),
+          }
+          print("Rakuten response received; product count:", len(rows))
+          print("Required product fields present:", checks)
+          print("Affiliate URL present:", bool(item.get("affiliateUrl")))
+          if not all(checks.values()):
+              raise SystemExit("Missing required product fields.")
+          print("PASS: basic API response shape verified; product identity and affiliate link NOT verified.")
+          PY
