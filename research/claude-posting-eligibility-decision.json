@@ -3,7 +3,7 @@
   "brand": "暮らしの便利帖｜大人の愛用品",
   "decision_date": "2026-10-27",
   "decision": "NO_GO",
-  "status": "eight_merchant_identities_supported_and_redirects_matched_attribution_unverified_no_go",
+  "status": "eight_verified_research_candidates_no_go_pending_affiliate_account_media_and_attribution_confirmation",
   "basis": "Existing GitHub merchant-page review: 8 product identities supported (including three re-reviewed listings). GitHub Actions run 40393482487 reported 8/8 live affiliate redirects matched expected product URLs. Affiliate commission attribution, current prices, and current listing state not verified.",
   "summary": {
     "total": 8,
@@ -119,6 +119,25 @@
       ]
     }
   ],
-  "next_action": "Confirm affiliate attribution eligibility and current listing/price accuracy before any posting approval; keep Claude research-only.",
-  "safety": "Do not publish, schedule, alter posting tasks, or treat this report as an approved product ledger."
+  "next_action": "Check Rakuten affiliate account/media registration and permitted posting/link method, then verify current prices/availability before approving any candidate. No self-purchase or artificial conversion test.",
+  "safety": "Do not publish, schedule, alter posting tasks, or treat this report as an approved product ledger.",
+  "affiliate_policy_review": {
+    "reviewed_at": "2026-10-27",
+    "official_sources": [
+      "https://affiliate.rakuten.co.jp/guideline/rule/",
+      "https://affiliate.rakuten.co.jp/guides/begin/",
+      "https://affiliate.rakuten.co.jp/guideline/terms/"
+    ],
+    "findings": [
+      "Rakuten Ichiba attribution generally requires cart addition within 24h after affiliate click and purchase within 89 days.",
+      "Threads and Instagram are listed as recognized SNS; direct-message affiliate links are prohibited.",
+      "Correct live redirect alone does not establish affiliate attribution, active partner eligibility, actual conversions or current commission rate."
+    ],
+    "confirmed_for_these_eight": "Live merchant destination match 8/8 per Actions test; not an actual conversion test.",
+    "not_confirmed": [
+      "Affiliate tracking attribution and account/media compliance",
+      "Current product availability, price and commission rate",
+      "Actual orders and confirmed rewards"
+    ]
+  }
 }
