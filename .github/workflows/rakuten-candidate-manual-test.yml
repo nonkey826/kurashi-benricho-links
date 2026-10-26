@@ -1,0 +1,38 @@
+name: Rakuten candidate collection manual test
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  fetch-candidates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Fetch candidate products (no publishing)
+        env:
+          RAKUTEN_APPLICATION_ID: ${{ secrets.RAKUTEN_APPLICATION_ID }}
+          RAKUTEN_ACCESS_KEY: ${{ secrets.RAKUTEN_ACCESS_KEY }}
+          RAKUTEN_AFFILIATE_ID: ${{ secrets.RAKUTEN_AFFILIATE_ID }}
+        run: |
+          python3 - <<'PY'
+          import runpy
+          import urllib.error
+          try:
+              runpy.run_path("scripts/fetch_rakuten_candidates.py", run_name="__main__")
+          except urllib.error.HTTPError as exc:
+              raise SystemExit(f"Rakuten API HTTP {exc.code}; no credentials printed") from None
+          except urllib.error.URLError:
+              raise SystemExit("Rakuten API network error; no credentials printed") from None
+          PY
+      - name: Upload raw candidates for inspection
+        uses: actions/upload-artifact@v4
+        with:
+          name: rakuten-raw-candidates
+          path: research/rakuten-candidates.json
+          if-no-files-found: error
+          retention-days: 1
