@@ -55,7 +55,10 @@ def main():
             item = row.get("Item", row)
             code = item.get("itemCode")
             url = item.get("itemUrl")
-            if not code or not isinstance(url, str) or not url.startswith("https://"):
+            if not code or not isinstance(url, str):
+                continue
+            page = merchant_page(url, code)
+            if not page:
                 continue
             items[code] = {
                 "item_code": code, "name": item.get("itemName"),
