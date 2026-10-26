@@ -4,7 +4,7 @@
   "purpose": "Claude read-only research handoff",
   "status": "review_only_posting_prohibited_affiliate_attribution_unverified",
   "source_file": "research/claude-candidate-url-review.json",
-  "readme": "Research-only. 8 merchant product identities supported and 8 live redirects matched, but affiliate attribution and current listing/price not verified. Do not publish, schedule, or use links in posts. This file does not contain the original affiliate URLs or full AI evaluation.",
+  "readme": "Research only: eight merchant pages and eight prior live redirect destinations matched. Current price and stock could not be verified from public listing text. Affiliate attribution remains unverified. Do not post, schedule, or publish links.",
   "rules": {
     "require_approved_for_posting_true": true,
     "allow_automatic_posting": false,
@@ -24,8 +24,14 @@
       "affiliate_attribution_verified": false,
       "posting_decision": "BLOCK",
       "blocking_reasons": [
+        "current_price_unverified",
+        "current_stock_unverified",
         "affiliate_attribution_unverified"
-      ]
+      ],
+      "current_price_jpy": null,
+      "current_price_verified": false,
+      "current_stock_status": "unknown",
+      "current_stock_verified": false
     },
     {
       "item_code": "shopmarna:10006509",
@@ -38,8 +44,14 @@
       "affiliate_attribution_verified": false,
       "posting_decision": "BLOCK",
       "blocking_reasons": [
+        "current_price_unverified",
+        "current_stock_unverified",
         "affiliate_attribution_unverified"
-      ]
+      ],
+      "current_price_jpy": null,
+      "current_price_verified": false,
+      "current_stock_status": "unknown",
+      "current_stock_verified": false
     },
     {
       "item_code": "shopmarna:10006687",
@@ -52,8 +64,14 @@
       "affiliate_attribution_verified": false,
       "posting_decision": "BLOCK",
       "blocking_reasons": [
+        "current_price_unverified",
+        "current_stock_unverified",
         "affiliate_attribution_unverified"
-      ]
+      ],
+      "current_price_jpy": null,
+      "current_price_verified": false,
+      "current_stock_status": "unknown",
+      "current_stock_verified": false
     },
     {
       "item_code": "taigu188:10000816",
@@ -66,8 +84,14 @@
       "affiliate_attribution_verified": false,
       "posting_decision": "BLOCK",
       "blocking_reasons": [
+        "current_price_unverified",
+        "current_stock_unverified",
         "affiliate_attribution_unverified"
-      ]
+      ],
+      "current_price_jpy": null,
+      "current_price_verified": false,
+      "current_stock_status": "unknown",
+      "current_stock_verified": false
     },
     {
       "item_code": "kurashiya:10005855",
@@ -80,8 +104,14 @@
       "affiliate_attribution_verified": false,
       "posting_decision": "BLOCK",
       "blocking_reasons": [
+        "current_price_unverified",
+        "current_stock_unverified",
         "affiliate_attribution_unverified"
-      ]
+      ],
+      "current_price_jpy": null,
+      "current_price_verified": false,
+      "current_stock_status": "unknown",
+      "current_stock_verified": false
     },
     {
       "item_code": "gekiyasukaguya:10023096",
@@ -94,8 +124,14 @@
       "affiliate_attribution_verified": false,
       "posting_decision": "BLOCK",
       "blocking_reasons": [
+        "current_price_unverified",
+        "current_stock_unverified",
         "affiliate_attribution_unverified"
-      ]
+      ],
+      "current_price_jpy": null,
+      "current_price_verified": false,
+      "current_stock_status": "unknown",
+      "current_stock_verified": false
     },
     {
       "item_code": "keyuca:10020019",
@@ -108,8 +144,14 @@
       "affiliate_attribution_verified": false,
       "posting_decision": "BLOCK",
       "blocking_reasons": [
+        "current_price_unverified",
+        "current_stock_unverified",
         "affiliate_attribution_unverified"
-      ]
+      ],
+      "current_price_jpy": null,
+      "current_price_verified": false,
+      "current_stock_status": "unknown",
+      "current_stock_verified": false
     },
     {
       "item_code": "criminal:10000118",
@@ -122,8 +164,14 @@
       "affiliate_attribution_verified": false,
       "posting_decision": "BLOCK",
       "blocking_reasons": [
+        "current_price_unverified",
+        "current_stock_unverified",
         "affiliate_attribution_unverified"
-      ]
+      ],
+      "current_price_jpy": null,
+      "current_price_verified": false,
+      "current_stock_status": "unknown",
+      "current_stock_verified": false
     }
   ],
   "decision_file": "research/claude-posting-eligibility-decision.json",
@@ -134,5 +182,16 @@
     "affiliate_redirect_destination_matched": 8,
     "affiliate_attribution_verified": 0,
     "approved_for_posting": 0
+  },
+  "latest_market_check": {
+    "checked_at": "2026-10-27",
+    "merchant_page_accessible": 8,
+    "merchant_identity_matches": 8,
+    "current_item_price_verified": 0,
+    "current_stock_verified": 0,
+    "affiliate_live_redirect_matches_from_prior_run": 8,
+    "affiliate_tracking_attribution_verified": 0,
+    "method": "Public Rakuten item page text plus prior GitHub Actions run 40393482487. Public page extraction did not reliably expose target-item price or stock; related product prices must not be used.",
+    "decision": "HOLD_ALL_EIGHT"
   }
 }
