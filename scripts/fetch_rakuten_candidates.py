@@ -28,6 +28,24 @@ def fetch(query):
     with urllib.request.urlopen(req, timeout=20) as response:
         return json.load(response)
 
+def merchant_page(item_url, item_code):
+    """Extract Rakuten item page from API URL without claiming page verification."""
+    parsed = urllib.parse.urlparse(item_url)
+    if parsed.hostname == "item.rakuten.co.jp":
+        page = item_url
+    elif parsed.hostname == "hb.afl.rakuten.co.jp":
+        page = urllib.parse.parse_qs(parsed.query).get("pc", [""])[0]
+    else:
+        return None
+    dest = urllib.parse.urlparse(page)
+    if dest.scheme != "https" or dest.hostname != "item.rakuten.co.jp":
+        return None
+    shop = str(item_code).split(":", 1)[0]
+    parts = [x for x in dest.path.split("/") if x]
+    if len(parts) < 2 or parts[0] != shop:
+        return None
+    return page
+
 def main():
     if not os.getenv("RAKUTEN_APPLICATION_ID") or not os.getenv("RAKUTEN_ACCESS_KEY"):
         sys.exit("RAKUTEN_APPLICATION_ID and RAKUTEN_ACCESS_KEY are required")
@@ -41,7 +59,7 @@ def main():
                 continue
             items[code] = {
                 "item_code": code, "name": item.get("itemName"),
-                "price_jpy": item.get("itemPrice"), "merchant_url": url,
+                "price_jpy": item.get("itemPrice"), "merchant_url": page,
                 "affiliate_url": item.get("affiliateUrl") if os.getenv("RAKUTEN_AFFILIATE_ID") else None,
                 "review_count": item.get("reviewCount"), "review_average": item.get("reviewAverage"),
                 "shop_name": item.get("shopName"), "source": "rakuten_ichiba_api",
