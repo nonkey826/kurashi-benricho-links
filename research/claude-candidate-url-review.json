@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "brand": "暮らしの便利帖｜大人の愛用品",
+  "source": "user_uploaded_claude_candidate_artifact_2026-10-26",
+  "status": "review_only_not_approved_for_posting",
+  "description": "Offline URL extraction from eight API-sourced AI-ranked candidates. Merchant pages have not been opened or checked against titles. Original affiliate URLs remain only in the uploaded artifact, not this index.",
+  "products": [
+    {
+      "item_code": "shimoyama-onlineshop:10001813",
+      "merchant_url": "https://item.rakuten.co.jp/shimoyama-onlineshop/2111aux002/",
+      "url_structure_checked": true,
+      "page_content_verified": false,
+      "affiliate_destination_verified": false,
+      "approved_for_posting": false
+    },
+    {
+      "item_code": "shopmarna:10006509",
+      "merchant_url": "https://item.rakuten.co.jp/shopmarna/k747/",
+      "url_structure_checked": true,
+      "page_content_verified": false,
+      "affiliate_destination_verified": false,
+      "approved_for_posting": false
+    },
+    {
+      "item_code": "shopmarna:10006687",
+      "merchant_url": "https://item.rakuten.co.jp/shopmarna/k809/",
+      "url_structure_checked": true,
+      "page_content_verified": false,
+      "affiliate_destination_verified": false,
+      "approved_for_posting": false
+    },
+    {
+      "item_code": "taigu188:10000816",
+      "merchant_url": "https://item.rakuten.co.jp/taigu188/short_sieve/",
+      "url_structure_checked": true,
+      "page_content_verified": false,
+      "affiliate_destination_verified": false,
+      "approved_for_posting": false
+    },
+    {
+      "item_code": "kurashiya:10005855",
+      "merchant_url": "https://item.rakuten.co.jp/kurashiya/111-97130/",
+      "url_structure_checked": true,
+      "page_content_verified": false,
+      "affiliate_destination_verified": false,
+      "approved_for_posting": false
+    },
+    {
+      "item_code": "gekiyasukaguya:10023096",
+      "merchant_url": "https://item.rakuten.co.jp/gekiyasukaguya/ket140065/",
+      "url_structure_checked": true,
+      "page_content_verified": false,
+      "affiliate_destination_verified": false,
+      "approved_for_posting": false
+    },
+    {
+      "item_code": "keyuca:10020019",
+      "merchant_url": "https://item.rakuten.co.jp/keyuca/3500450/",
+      "url_structure_checked": true,
+      "page_content_verified": false,
+      "affiliate_destination_verified": false,
+      "approved_for_posting": false
+    },
+    {
+      "item_code": "criminal:10000118",
+      "merchant_url": "https://item.rakuten.co.jp/criminal/caprack-18/",
+      "url_structure_checked": true,
+      "page_content_verified": false,
+      "affiliate_destination_verified": false,
+      "approved_for_posting": false
+    }
+  ]
+}
