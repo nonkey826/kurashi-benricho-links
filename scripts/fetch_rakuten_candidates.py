@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Fetch genuine Rakuten Ichiba listings. Standalone, never runs in posting automation.
 
-Requires RAKUTEN_APPLICATION_ID. Optional RAKUTEN_ACCESS_KEY and
-RAKUTEN_AFFILIATE_ID. Do not run until Rakuten's access restrictions are confirmed.
+Requires RAKUTEN_APPLICATION_ID and RAKUTEN_ACCESS_KEY. Optional
+RAKUTEN_AFFILIATE_ID. Manual execution only; does not publish products.
 """
 import json
 import os
@@ -13,7 +13,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 OUTPUT = Path("research/rakuten-candidates.json")
-ENDPOINT = "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20220601"
+ENDPOINT = "https://openapi.rakuten.co.jp/ichibams/api/IchibaItem/Search/20260701"
 QUERIES = ["キッチン 便利グッズ", "収納 便利", "掃除 時短"]
 
 def fetch(query):
@@ -29,8 +29,8 @@ def fetch(query):
         return json.load(response)
 
 def main():
-    if not os.getenv("RAKUTEN_APPLICATION_ID"):
-        sys.exit("RAKUTEN_APPLICATION_ID is required")
+    if not os.getenv("RAKUTEN_APPLICATION_ID") or not os.getenv("RAKUTEN_ACCESS_KEY"):
+        sys.exit("RAKUTEN_APPLICATION_ID and RAKUTEN_ACCESS_KEY are required")
     items = {}
     for query in QUERIES:
         for row in fetch(query).get("Items", []):
