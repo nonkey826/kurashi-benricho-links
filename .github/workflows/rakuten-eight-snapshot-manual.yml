@@ -1,0 +1,30 @@
+name: Rakuten eight-product snapshot (manual only)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  product-snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch fresh Rakuten API listings (no OpenAI calls)
+        env:
+          RAKUTEN_APPLICATION_ID: ${{ secrets.RAKUTEN_APPLICATION_ID }}
+          RAKUTEN_ACCESS_KEY: ${{ secrets.RAKUTEN_ACCESS_KEY }}
+          RAKUTEN_AFFILIATE_ID: ${{ secrets.RAKUTEN_AFFILIATE_ID }}
+        run: python3 scripts/fetch_rakuten_candidates.py
+      - name: Produce sanitized snapshot of the fixed eight items
+        run: python3 scripts/build_rakuten_eight_snapshot.py
+      - name: Upload snapshot only (no affiliate URLs or secrets)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rakuten-eight-current-snapshot
+          path: research/rakuten-eight-current-snapshot.json
+          if-no-files-found: warn
+          retention-days: 2
