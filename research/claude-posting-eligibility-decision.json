@@ -3,14 +3,14 @@
   "brand": "暮らしの便利帖｜大人の愛用品",
   "decision_date": "2026-10-27",
   "decision": "NO_GO",
-  "status": "all_candidates_blocked_pending_live_affiliate_redirect_verification",
-  "basis": "Existing merchant page review records plus offline affiliate parameter checks; no live redirect or affiliate attribution verification has been completed.",
+  "status": "all_live_redirects_match_but_posting_remains_blocked",
+  "basis": "User-uploaded GitHub Actions artifact affiliate-redirect-test-report.json: all 8 results completed, HTTP 200, merchant_destination_matches true. Does not verify affiliate attribution, product content, or price.",
   "summary": {
     "total": 8,
     "approved": 0,
     "merchant_page_title_matched_reported": 5,
     "merchant_page_unresolved": 3,
-    "affiliate_live_redirect_verified": 0
+    "affiliate_live_redirect_verified": 8
   },
   "products": [
     {
@@ -18,12 +18,11 @@
       "merchant_page_review": "page_title_matches",
       "merchant_page_content_verified_in_existing_review": true,
       "affiliate_parameter_consistency_passed": true,
-      "affiliate_live_redirect_verified": false,
+      "affiliate_live_redirect_verified": true,
       "affiliate_attribution_verified": false,
       "approved_for_posting": false,
       "decision": "BLOCK",
       "blocking_reasons": [
-        "affiliate_live_redirect_unverified",
         "affiliate_attribution_unverified"
       ]
     },
@@ -32,12 +31,11 @@
       "merchant_page_review": "page_title_matches",
       "merchant_page_content_verified_in_existing_review": true,
       "affiliate_parameter_consistency_passed": true,
-      "affiliate_live_redirect_verified": false,
+      "affiliate_live_redirect_verified": true,
       "affiliate_attribution_verified": false,
       "approved_for_posting": false,
       "decision": "BLOCK",
       "blocking_reasons": [
-        "affiliate_live_redirect_unverified",
         "affiliate_attribution_unverified"
       ]
     },
@@ -46,12 +44,11 @@
       "merchant_page_review": "page_title_matches",
       "merchant_page_content_verified_in_existing_review": true,
       "affiliate_parameter_consistency_passed": true,
-      "affiliate_live_redirect_verified": false,
+      "affiliate_live_redirect_verified": true,
       "affiliate_attribution_verified": false,
       "approved_for_posting": false,
       "decision": "BLOCK",
       "blocking_reasons": [
-        "affiliate_live_redirect_unverified",
         "affiliate_attribution_unverified"
       ]
     },
@@ -60,12 +57,11 @@
       "merchant_page_review": "page_title_matches",
       "merchant_page_content_verified_in_existing_review": true,
       "affiliate_parameter_consistency_passed": true,
-      "affiliate_live_redirect_verified": false,
+      "affiliate_live_redirect_verified": true,
       "affiliate_attribution_verified": false,
       "approved_for_posting": false,
       "decision": "BLOCK",
       "blocking_reasons": [
-        "affiliate_live_redirect_unverified",
         "affiliate_attribution_unverified"
       ]
     },
@@ -74,13 +70,12 @@
       "merchant_page_review": "page_fetch_timeout",
       "merchant_page_content_verified_in_existing_review": false,
       "affiliate_parameter_consistency_passed": true,
-      "affiliate_live_redirect_verified": false,
+      "affiliate_live_redirect_verified": true,
       "affiliate_attribution_verified": false,
       "approved_for_posting": false,
       "decision": "BLOCK",
       "blocking_reasons": [
         "merchant_page_identity_unresolved",
-        "affiliate_live_redirect_unverified",
         "affiliate_attribution_unverified"
       ]
     },
@@ -89,12 +84,11 @@
       "merchant_page_review": "page_title_matches",
       "merchant_page_content_verified_in_existing_review": true,
       "affiliate_parameter_consistency_passed": true,
-      "affiliate_live_redirect_verified": false,
+      "affiliate_live_redirect_verified": true,
       "affiliate_attribution_verified": false,
       "approved_for_posting": false,
       "decision": "BLOCK",
       "blocking_reasons": [
-        "affiliate_live_redirect_unverified",
         "affiliate_attribution_unverified"
       ]
     },
@@ -103,13 +97,12 @@
       "merchant_page_review": "page_title_matches_but_page_product_number_differs",
       "merchant_page_content_verified_in_existing_review": false,
       "affiliate_parameter_consistency_passed": true,
-      "affiliate_live_redirect_verified": false,
+      "affiliate_live_redirect_verified": true,
       "affiliate_attribution_verified": false,
       "approved_for_posting": false,
       "decision": "BLOCK",
       "blocking_reasons": [
         "merchant_page_identity_unresolved",
-        "affiliate_live_redirect_unverified",
         "affiliate_attribution_unverified"
       ]
     },
@@ -118,17 +111,16 @@
       "merchant_page_review": "page_title_matches_but_page_product_number_differs",
       "merchant_page_content_verified_in_existing_review": false,
       "affiliate_parameter_consistency_passed": true,
-      "affiliate_live_redirect_verified": false,
+      "affiliate_live_redirect_verified": true,
       "affiliate_attribution_verified": false,
       "approved_for_posting": false,
       "decision": "BLOCK",
       "blocking_reasons": [
         "merchant_page_identity_unresolved",
-        "affiliate_live_redirect_unverified",
         "affiliate_attribution_unverified"
       ]
     }
   ],
-  "next_action": "Run a manual live redirect check with the original 8 candidate affiliate URLs in a network-enabled environment, review discrepancies, then separately verify affiliate attribution before considering any approval.",
+  "next_action": "Resolve three merchant-page identity issues and verify affiliate attribution before any posting approval. Do not alter scheduled posts.",
   "safety": "Do not publish, schedule, alter posting tasks, or treat this report as an approved product ledger."
 }
