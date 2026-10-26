@@ -1,0 +1,31 @@
+name: Prepare Claude product candidates (manual test)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch genuine Rakuten listings
+        env:
+          RAKUTEN_APPLICATION_ID: ${{ secrets.RAKUTEN_APPLICATION_ID }}
+          RAKUTEN_ACCESS_KEY: ${{ secrets.RAKUTEN_ACCESS_KEY }}
+          RAKUTEN_AFFILIATE_ID: ${{ secrets.RAKUTEN_AFFILIATE_ID }}
+        run: python3 scripts/fetch_rakuten_candidates.py
+      - name: Evaluate candidate demand with OpenAI (paid API)
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python3 scripts/prepare_claude_candidates.py
+      - name: Save review-only handoff file as temporary artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: claude-product-candidates-review-only
+          path: research/claude-product-candidates.json
+          if-no-files-found: error
+          retention-days: 1
