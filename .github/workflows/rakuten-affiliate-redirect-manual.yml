@@ -1,0 +1,32 @@
+name: Rakuten affiliate redirect check (manual only)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  redirect-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch current Rakuten API listings (no OpenAI calls)
+        env:
+          RAKUTEN_APPLICATION_ID: ${{ secrets.RAKUTEN_APPLICATION_ID }}
+          RAKUTEN_ACCESS_KEY: ${{ secrets.RAKUTEN_ACCESS_KEY }}
+          RAKUTEN_AFFILIATE_ID: ${{ secrets.RAKUTEN_AFFILIATE_ID }}
+        run: python3 scripts/fetch_rakuten_candidates.py
+      - name: Build temporary input for the eight reviewed item codes
+        run: python3 scripts/prepare_redirect_test_input.py
+      - name: Check live affiliate redirect destinations
+        run: python3 scripts/test_affiliate_redirects.py
+      - name: Upload sanitized result only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rakuten-affiliate-redirect-report
+          path: research/affiliate-redirect-test-report.json
+          if-no-files-found: warn
+          retention-days: 1
