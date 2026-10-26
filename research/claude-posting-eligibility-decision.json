@@ -3,14 +3,15 @@
   "brand": "暮らしの便利帖｜大人の愛用品",
   "decision_date": "2026-10-27",
   "decision": "NO_GO",
-  "status": "all_live_redirects_match_but_posting_remains_blocked",
-  "basis": "User-uploaded GitHub Actions artifact affiliate-redirect-test-report.json: all 8 results completed, HTTP 200, merchant_destination_matches true. Does not verify affiliate attribution, product content, or price.",
+  "status": "eight_merchant_identities_supported_and_redirects_matched_attribution_unverified_no_go",
+  "basis": "Existing GitHub merchant-page review: 8 product identities supported (including three re-reviewed listings). GitHub Actions run 40393482487 reported 8/8 live affiliate redirects matched expected product URLs. Affiliate commission attribution, current prices, and current listing state not verified.",
   "summary": {
     "total": 8,
     "approved": 0,
-    "merchant_page_title_matched_reported": 5,
-    "merchant_page_unresolved": 3,
-    "affiliate_live_redirect_verified": 8
+    "merchant_page_title_matched_reported": 8,
+    "merchant_page_unresolved": 0,
+    "affiliate_live_redirect_verified": 8,
+    "merchant_page_identity_supported": 8
   },
   "products": [
     {
@@ -67,15 +68,14 @@
     },
     {
       "item_code": "kurashiya:10005855",
-      "merchant_page_review": "page_fetch_timeout",
-      "merchant_page_content_verified_in_existing_review": false,
+      "merchant_page_review": "page_product_identity_supported",
+      "merchant_page_content_verified_in_existing_review": true,
       "affiliate_parameter_consistency_passed": true,
       "affiliate_live_redirect_verified": true,
       "affiliate_attribution_verified": false,
       "approved_for_posting": false,
       "decision": "BLOCK",
       "blocking_reasons": [
-        "merchant_page_identity_unresolved",
         "affiliate_attribution_unverified"
       ]
     },
@@ -94,33 +94,31 @@
     },
     {
       "item_code": "keyuca:10020019",
-      "merchant_page_review": "page_title_matches_but_page_product_number_differs",
-      "merchant_page_content_verified_in_existing_review": false,
+      "merchant_page_review": "page_product_identity_supported_display_sku_differs_from_url_slug",
+      "merchant_page_content_verified_in_existing_review": true,
       "affiliate_parameter_consistency_passed": true,
       "affiliate_live_redirect_verified": true,
       "affiliate_attribution_verified": false,
       "approved_for_posting": false,
       "decision": "BLOCK",
       "blocking_reasons": [
-        "merchant_page_identity_unresolved",
         "affiliate_attribution_unverified"
       ]
     },
     {
       "item_code": "criminal:10000118",
-      "merchant_page_review": "page_title_matches_but_page_product_number_differs",
-      "merchant_page_content_verified_in_existing_review": false,
+      "merchant_page_review": "page_product_identity_supported_display_sku_differs_from_url_slug",
+      "merchant_page_content_verified_in_existing_review": true,
       "affiliate_parameter_consistency_passed": true,
       "affiliate_live_redirect_verified": true,
       "affiliate_attribution_verified": false,
       "approved_for_posting": false,
       "decision": "BLOCK",
       "blocking_reasons": [
-        "merchant_page_identity_unresolved",
         "affiliate_attribution_unverified"
       ]
     }
   ],
-  "next_action": "Resolve three merchant-page identity issues and verify affiliate attribution before any posting approval. Do not alter scheduled posts.",
+  "next_action": "Confirm affiliate attribution eligibility and current listing/price accuracy before any posting approval; keep Claude research-only.",
   "safety": "Do not publish, schedule, alter posting tasks, or treat this report as an approved product ledger."
 }
