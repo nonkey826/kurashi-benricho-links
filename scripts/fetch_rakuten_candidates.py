@@ -63,6 +63,7 @@ def main():
             items[code] = {
                 "item_code": code, "name": item.get("itemName"),
                 "price_jpy": item.get("itemPrice"), "merchant_url": page,
+                "api_availability": item.get("availability"),
                 "affiliate_url": item.get("affiliateUrl") if os.getenv("RAKUTEN_AFFILIATE_ID") else None,
                 "review_count": item.get("reviewCount"), "review_average": item.get("reviewAverage"),
                 "shop_name": item.get("shopName"), "source": "rakuten_ichiba_api",
