@@ -6,7 +6,7 @@
   "source_type": "AI-generated research evaluation; scores are evidence-readiness, not sales forecasts",
   "status": "research_only_not_approved_for_posting",
   "expected_count": 8,
-  "evaluated_count": 7,
+  "evaluated_count": 8,
   "unmatched_item_codes": [
     "gekiyasukaguya:10023096"
   ],
@@ -117,6 +117,32 @@
       "current_stock": "unverified",
       "approved_for_posting": false,
       "posting_decision": "BLOCK"
+    },
+    {
+      "item_code": "gekiyasukaguya:10023096",
+      "prior_reviewed_product_name": "★最安値に挑戦中★ ハンディチョッパー Toffy トフィー ラドンナ フードチョッパー ぶんぶんチョッパー 手動 刻む まぜる フードプロセッサー フードカッター チョッパー みじん切り 便利グッズ アッシュホワイト/ペールアクア KET140065",
+      "price_jpy": 2180,
+      "merchant_url": "https://item.rakuten.co.jp/gekiyasukaguya/ket140065/",
+      "shop_name": "インテリアのゲキカグ",
+      "review_count_api_snapshot": 333,
+      "review_average_api_snapshot": 4.5,
+      "price_source": "Rakuten API snapshot 2026-10-27T09:37:53.662572+00:00; historical, not live",
+      "evidence_readiness_score": 20,
+      "missing_evidence": [
+        "40-60歳女性向けの特定の利用適合に関する情報",
+        "健康や美容効果に関するデータ",
+        "ユーザーレビューにおける40-60歳女性の声や体験",
+        "安全性や利便性がこの年齢層に特化している根拠"
+      ],
+      "target_fit_hypothesis": "40-60歳の女性が手軽に調理時短を可能にする調理器具として利用できる可能性がある。",
+      "evidence_based_reason": "商品説明には手動式で使いやすく、時短調理に適していることが記載されているが、対象となる年齢層に特化した評価や効果の記載は存在しないため、利用適合を判断するには情報が不足している。",
+      "risks": "40-60歳女性特有のニーズや制約に合わない可能性があり、実際の使用感や安全性に関する情報がないため適合性が不確かである。",
+      "sales_evidence": "unverified",
+      "affiliate_attribution": "unverified",
+      "current_stock": "unverified",
+      "approved_for_posting": false,
+      "posting_decision": "BLOCK"
     }
-  ]
+  ],
+  "updated_at": "2026-10-27T09:37:53.662572+00:00"
 }
