@@ -39,7 +39,7 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: python3 scripts/evaluate_eight_products.py new_products
       - name: Commit updated candidate file only when changed
-        if: inputs.mode == 'new_products'
+        if: github.event_name == 'schedule' || inputs.mode == 'new_products'
         run: |
           if ! git diff --quiet -- research/claude-evaluated-candidates.json; then
             git config user.name 'github-actions[bot]'
@@ -56,7 +56,7 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: python3 scripts/evaluate_eight_products.py
       - name: Upload legacy evaluation only
-        if: inputs.mode == 'fixed_eight'
+        if: github.event_name == 'workflow_dispatch' && inputs.mode == 'fixed_eight'
         uses: actions/upload-artifact@v4
         with:
           name: openai-eight-evaluation
