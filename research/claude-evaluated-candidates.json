@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "brand": "暮らしの便利帖｜大人の愛用品",
+  "purpose": "Claude read-only candidate shortlist for drafting and human review",
+  "source": "OpenAI eight-product evaluation run #3 artifact supplied by user, 2026-10-27",
+  "source_type": "AI-generated research evaluation; scores are evidence-readiness, not sales forecasts",
+  "status": "research_only_not_approved_for_posting",
+  "expected_count": 8,
+  "evaluated_count": 7,
+  "unmatched_item_codes": [
+    "gekiyasukaguya:10023096"
+  ],
+  "rules": {
+    "allow_read_only_reference": true,
+    "allow_draft_ideas": true,
+    "allow_auto_post": false,
+    "allow_publish": false,
+    "allow_modify_existing_tasks": false,
+    "require_independent_verification_before_publication": true,
+    "do_not_treat_ai_rationale_as_verified_facts": true
+  },
+  "products": [
+    {
+      "item_code": "shimoyama-onlineshop:10001813",
+      "prior_reviewed_product_name": "オークス leye ゆびさきトング",
+      "evidence_readiness_score": 85,
+      "price_jpy": 1240,
+      "price_source": "Rakuten API snapshot 2026-10-26T20:53:23Z; historical, not live",
+      "review_claims_in_ai_output": "not independently reconciled with Rakuten API raw response",
+      "product_description_claims_in_ai_output": "not independently reconciled with Rakuten API raw response",
+      "sales_evidence": "unverified",
+      "affiliate_attribution": "unverified",
+      "current_stock": "unverified",
+      "approved_for_posting": false,
+      "posting_decision": "BLOCK"
+    },
+    {
+      "item_code": "shopmarna:10006687",
+      "prior_reviewed_product_name": "マーナ ザル・ボウルセット",
+      "evidence_readiness_score": 83,
+      "price_jpy": 2490,
+      "price_source": "Rakuten API snapshot 2026-10-26T20:53:23Z; historical, not live",
+      "review_claims_in_ai_output": "not independently reconciled with Rakuten API raw response",
+      "product_description_claims_in_ai_output": "not independently reconciled with Rakuten API raw response",
+      "sales_evidence": "unverified",
+      "affiliate_attribution": "unverified",
+      "current_stock": "unverified",
+      "approved_for_posting": false,
+      "posting_decision": "BLOCK"
+    },
+    {
+      "item_code": "shopmarna:10006509",
+      "prior_reviewed_product_name": "マーナ 料理のハサミ",
+      "evidence_readiness_score": 80,
+      "price_jpy": 2728,
+      "price_source": "Rakuten API snapshot 2026-10-26T20:53:23Z; historical, not live",
+      "review_claims_in_ai_output": "not independently reconciled with Rakuten API raw response",
+      "product_description_claims_in_ai_output": "not independently reconciled with Rakuten API raw response",
+      "sales_evidence": "unverified",
+      "affiliate_attribution": "unverified",
+      "current_stock": "unverified",
+      "approved_for_posting": false,
+      "posting_decision": "BLOCK"
+    },
+    {
+      "item_code": "taigu188:10000816",
+      "prior_reviewed_product_name": "浮かせる三角コーナー",
+      "evidence_readiness_score": 75,
+      "price_jpy": 1380,
+      "price_source": "Rakuten API snapshot 2026-10-26T20:53:23Z; historical, not live",
+      "review_claims_in_ai_output": "not independently reconciled with Rakuten API raw response",
+      "product_description_claims_in_ai_output": "not independently reconciled with Rakuten API raw response",
+      "sales_evidence": "unverified",
+      "affiliate_attribution": "unverified",
+      "current_stock": "unverified",
+      "approved_for_posting": false,
+      "posting_decision": "BLOCK"
+    },
+    {
+      "item_code": "kurashiya:10005855",
+      "prior_reviewed_product_name": "セキスイ スリムラック",
+      "evidence_readiness_score": 70,
+      "price_jpy": 3580,
+      "price_source": "Rakuten API snapshot 2026-10-26T20:53:23Z; historical, not live",
+      "review_claims_in_ai_output": "not independently reconciled with Rakuten API raw response",
+      "product_description_claims_in_ai_output": "not independently reconciled with Rakuten API raw response",
+      "sales_evidence": "unverified",
+      "affiliate_attribution": "unverified",
+      "current_stock": "unverified",
+      "approved_for_posting": false,
+      "posting_decision": "BLOCK"
+    },
+    {
+      "item_code": "keyuca:10020019",
+      "prior_reviewed_product_name": "KEYUCA バナナスタンド",
+      "evidence_readiness_score": 65,
+      "price_jpy": 1375,
+      "price_source": "Rakuten API snapshot 2026-10-26T20:53:23Z; historical, not live",
+      "review_claims_in_ai_output": "not independently reconciled with Rakuten API raw response",
+      "product_description_claims_in_ai_output": "not independently reconciled with Rakuten API raw response",
+      "sales_evidence": "unverified",
+      "affiliate_attribution": "unverified",
+      "current_stock": "unverified",
+      "approved_for_posting": false,
+      "posting_decision": "BLOCK"
+    },
+    {
+      "item_code": "criminal:10000118",
+      "prior_reviewed_product_name": "PERFECT CURVE キャップラック",
+      "evidence_readiness_score": 50,
+      "price_jpy": 3300,
+      "price_source": "Rakuten API snapshot 2026-10-26T20:53:23Z; historical, not live",
+      "review_claims_in_ai_output": "not independently reconciled with Rakuten API raw response",
+      "product_description_claims_in_ai_output": "not independently reconciled with Rakuten API raw response",
+      "sales_evidence": "unverified",
+      "affiliate_attribution": "unverified",
+      "current_stock": "unverified",
+      "approved_for_posting": false,
+      "posting_decision": "BLOCK"
+    }
+  ]
+}
