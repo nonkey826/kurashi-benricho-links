@@ -1,10 +1,23 @@
-name: OpenAI eight-product evidence evaluation (manual only)
+name: Rakuten research evaluation (manual only)
 
 on:
   workflow_dispatch:
+    inputs:
+      mode:
+        description: Research mode
+        type: choice
+        required: true
+        default: new_products
+        options:
+          - new_products
+          - fixed_eight
 
 permissions:
-  contents: read
+  contents: write
+
+concurrency:
+  group: kurashi-research-update
+  cancel-in-progress: false
 
 jobs:
   evaluate:
@@ -18,12 +31,30 @@ jobs:
           RAKUTEN_ACCESS_KEY: ${{ secrets.RAKUTEN_ACCESS_KEY }}
           RAKUTEN_AFFILIATE_ID: ${{ secrets.RAKUTEN_AFFILIATE_ID }}
         run: python3 scripts/fetch_rakuten_candidates.py
-      - name: Evaluate fixed eight research candidates (one OpenAI API request)
+      - name: Evaluate new eligible candidates only (max five)
+        if: inputs.mode == 'new_products'
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python3 scripts/evaluate_eight_products.py new_products
+      - name: Commit updated candidate file only when changed
+        if: inputs.mode == 'new_products'
+        run: |
+          if ! git diff --quiet -- research/claude-evaluated-candidates.json; then
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git add research/claude-evaluated-candidates.json
+            git commit -m 'research: append new BLOCK candidates'
+            git push
+          else
+            echo 'No new candidates; no commit'
+          fi
+      - name: Legacy fixed-eight evaluation (optional)
+        if: inputs.mode == 'fixed_eight'
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: python3 scripts/evaluate_eight_products.py
-      - name: Upload research-only evaluation
-        if: always()
+      - name: Upload legacy evaluation only
+        if: inputs.mode == 'fixed_eight'
         uses: actions/upload-artifact@v4
         with:
           name: openai-eight-evaluation
