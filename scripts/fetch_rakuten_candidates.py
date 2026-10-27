@@ -66,6 +66,7 @@ def main():
                 "api_availability": item.get("availability"),
                 "affiliate_url": item.get("affiliateUrl") if os.getenv("RAKUTEN_AFFILIATE_ID") else None,
                 "review_count": item.get("reviewCount"), "review_average": item.get("reviewAverage"),
+                "item_caption": item.get("itemCaption"),
                 "shop_name": item.get("shopName"), "source": "rakuten_ichiba_api",
                 "sales_evidence": "not_verified"
             }
