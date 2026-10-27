@@ -1,6 +1,8 @@
-name: Rakuten research evaluation (manual only)
+name: Rakuten research evaluation (weekly)
 
 on:
+  schedule:
+    - cron: '15 0 * * 1' # Monday 09:15 JST
   workflow_dispatch:
     inputs:
       mode:
@@ -32,7 +34,7 @@ jobs:
           RAKUTEN_AFFILIATE_ID: ${{ secrets.RAKUTEN_AFFILIATE_ID }}
         run: python3 scripts/fetch_rakuten_candidates.py
       - name: Evaluate new eligible candidates only (max five)
-        if: inputs.mode == 'new_products'
+        if: github.event_name == 'schedule' || inputs.mode == 'new_products'
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: python3 scripts/evaluate_eight_products.py new_products
@@ -49,7 +51,7 @@ jobs:
             echo 'No new candidates; no commit'
           fi
       - name: Legacy fixed-eight evaluation (optional)
-        if: inputs.mode == 'fixed_eight'
+        if: github.event_name == 'workflow_dispatch' && inputs.mode == 'fixed_eight'
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: python3 scripts/evaluate_eight_products.py
