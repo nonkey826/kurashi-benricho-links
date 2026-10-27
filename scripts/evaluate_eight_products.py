@@ -6,9 +6,36 @@ import urllib.request
 from pathlib import Path
 
 source=json.loads(Path("research/claude-readonly-handoff.json").read_text())
-items=[{"item_code":p["item_code"],"price_jpy":p["current_price_jpy"],"stock":"unknown","reviews":"unknown","sales":"unknown"} for p in source["products"]]
+raw_path=Path("research/rakuten-candidates.json")
+if not raw_path.exists():
+    raise SystemExit("Rakuten API data missing; do not evaluate stale or invented product facts")
+raw=json.loads(raw_path.read_text(encoding="utf-8"))
+index={p["item_code"]:p for p in raw.get("products",[]) if p.get("item_code")}
+items=[]
+for p in source["products"]:
+    live=index.get(p["item_code"])
+    if not live or live.get("merchant_url","").rstrip("/")!=p["merchant_url"].rstrip("/"):
+        raise SystemExit("Required verified product absent or URL mismatch: "+p["item_code"])
+    items.append({
+        "item_code":p["item_code"],
+        "product_name":live.get("name"),
+        "price_jpy":live.get("price_jpy"),
+        "description":(live.get("item_caption") or "")[:1200] or None,
+        "review_count":live.get("review_count"),
+        "review_average":live.get("review_average"),
+        "availability_code":live.get("api_availability"),
+        "sales_count":None,
+        "affiliate_rate":None,
+    })
 assert len(items)==8
-prompt="Evaluate evidence readiness for eight Japanese household products targeting women aged 40-60. No product titles, sales, review, stock or feature evidence is supplied. Do not invent facts. Respond JSON object with products array of 8 entries each with item_code, evidence_readiness_score integer 0-100, missing_evidence array, and target_fit_hypothesis Japanese text. No posting approvals. Data: "+json.dumps(items,ensure_ascii=False)
+prompt=("Assess these eight actual Rakuten API products for Japanese women aged 40-60. "
+"Use only supplied facts. Distinguish evidence-backed suitability from hypotheses. "
+"Reviews are API-reported if present; do not fabricate sales, commissions or rankings. "
+"Score evidence readiness, not expected sales. Never approve for posting. "
+"Return a JSON object with products array of exactly 8 entries. Each entry: "
+"item_code, evidence_readiness_score (integer 0-100), missing_evidence (array), "
+"target_fit_hypothesis (Japanese), evidence_based_reason (Japanese), risks (Japanese). "
+"Data: ")+json.dumps(items,ensure_ascii=False)
 payload={"model":"gpt-4.1-mini","input":prompt,"text":{"format":{"type":"json_object"}},"max_output_tokens":3000}
 req=urllib.request.Request("https://api.openai.com/v1/responses",data=json.dumps(payload).encode(),headers={"Authorization":"Bearer "+os.environ["OPENAI_API_KEY"],"Content-Type":"application/json"},method="POST")
 with urllib.request.urlopen(req,timeout=120) as resp:
